@@ -1,0 +1,5 @@
+CPSC 240: Holliday
+CPSC 335: Wortman
+CPSC 386: Shafae
+CPSC 452: Gofman
+CPSC 471: Tian
