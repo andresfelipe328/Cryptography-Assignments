@@ -1,0 +1,24 @@
+
+
+INFORMATION
+
+	– Name and email: Andres F. Romero N, andresfelipe328@csu.fullerton.edu
+
+	– The programming language: C++ and was successfully executed on VM running UBUNTU 20.04
+
+	– How to execute your program:
+		1. Have all files in the same directory.
+		2. Must have an input file already created with a plaintext to encrypt. Do not include punctuation or white space.
+		3. Write make on the command "make" (without quotations) to contruct .o files.
+		4. Write on the command line ./cipher <PLF, RTS, RFC, VIG, or CES> <KEY> <ENC or DEC> <INPUTFILENAME.txt> <OUTPUTFILENAME.txt>
+			4a. Every argument must be in this order and separated by one white space.
+			4b. You are limited to one cipher per execution.
+ 		5. When Program terminates, an enc.txt file will be created when ENC. When DEC, use enc.txt as input file to make a dec.txt file.
+		6. Program functionality is done.
+	
+	– Whether you implemented the extra credit: 
+	
+	– Anything special about your submission that we should take note of: 
+		1. My program does validate the key, if an incorrect key is given according to its cipher, an error message will be displayed and
+		   the program will terminate.
+		2. My program creates a Matrix.txt file for the ciphers that require a matrix (Vigenre and Caeasar don't qualify).
