@@ -54,7 +54,6 @@ def Dowload(NEW_SOCKET, portNumber, scheme, fileSize, upFile):
             with open('PublicKeys/publicOne.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close()
             
             fileBuffer = NEW_SOCKET.recv(BUFFER)
 
@@ -93,7 +92,6 @@ def Dowload(NEW_SOCKET, portNumber, scheme, fileSize, upFile):
             with open('PublicKeys/publicTwo.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close()
             
             fileBuffer = NEW_SOCKET.recv(BUFFER)
             if fileBuffer[len(fileBuffer) - 4:] == "stop".encode(FORMAT):
@@ -150,7 +148,6 @@ def TransferFile(conn, address, data):
             with open('PublicKeys/publicOne.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close() 
                     
             ciphertext = rsa.encrypt(bytesSend, publicKey)
             conn.send(ciphertext)
@@ -166,7 +163,6 @@ def TransferFile(conn, address, data):
             with open('PublicKeys/publicTwo.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close() 
                     
             ciphertext = rsa.encrypt(bytesSend, publicKey)
             conn.send(ciphertext)
@@ -182,8 +178,7 @@ def TransferFile(conn, address, data):
             with open('privateThree.pem', 'rb') as filePrivateKey:
                 keyData = filePrivateKey.read()
                 privateKey = rsa.PrivateKey._load_pkcs1_pem(keyData)
-            filePrivateKey.close()
-
+                
             sha = hashlib.sha256()
             while len(bytesSend) > 0:
                 sha.update(bytesSend)
