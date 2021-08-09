@@ -28,7 +28,6 @@ def Dowload(NEW_SOCKET, portNumber, scheme, fileSize, upFile):
         with open('privateTwo.pem', 'rb') as filePrivateKey:
             keyData = filePrivateKey.read()
             privateKey = rsa.PrivateKey._load_pkcs1_pem(keyData)
-        filePrivateKey.close()
 
         try:
             plaintext = rsa.decrypt(data, privateKey)
@@ -54,7 +53,6 @@ def Dowload(NEW_SOCKET, portNumber, scheme, fileSize, upFile):
             with open('PublicKeys/publicOne.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close()
 
             fileBuffer = NEW_SOCKET.recv(BUFFER)
             
@@ -91,7 +89,6 @@ def Dowload(NEW_SOCKET, portNumber, scheme, fileSize, upFile):
             with open('PublicKeys/publicThree.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close()
 
             fileBuffer = NEW_SOCKET.recv(BUFFER)
             
@@ -149,7 +146,6 @@ def TransferFile(conn, address, data, scheme):
             with open('PublicKeys/publicOne.pem', 'rb') as filePublicKey:
                 keyData = filePublicKey.read()
                 publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(keyData)
-            filePublicKey.close()
 
             ciphertext = rsa.encrypt(bytesSend, publicKey)
             conn.send(ciphertext)
@@ -181,7 +177,6 @@ def TransferFile(conn, address, data, scheme):
             with open('privateTwo.pem', 'rb') as filePrivateKey:
                 keyData = filePrivateKey.read()
                 privateKey = rsa.PrivateKey._load_pkcs1_pem(keyData)
-            filePrivateKey.close()
 
             sha = hashlib.sha256()
             while len(bytesSend) > 0:
